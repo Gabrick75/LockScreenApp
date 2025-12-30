@@ -4,8 +4,10 @@ import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var componentName: ComponentName
     private lateinit var tvStatus: TextView
     private lateinit var btnActivate: Button
+    private lateinit var btnGithub: LinearLayout
 
     private val adminLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         tvStatus = findViewById(R.id.tv_status)
         btnActivate = findViewById(R.id.btn_activate)
+        btnGithub = findViewById(R.id.btn_github)
 
         btnActivate.setOnClickListener {
             if (devicePolicyManager.isAdminActive(componentName)) {
@@ -48,6 +52,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 adminLauncher.launch(intent)
             }
+        }
+
+        // Clique GitHub
+        btnGithub.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://github.com/Gabrick75/LockScreenApp")
+            }
+            startActivity(intent)
         }
     }
 
