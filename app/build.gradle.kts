@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.lockscreen.app"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.lockscreen.app"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }
@@ -36,8 +36,8 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation(libs.androidx.core.ktx.v1120)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity.ktx)
 }
